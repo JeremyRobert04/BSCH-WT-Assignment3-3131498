@@ -1,0 +1,42 @@
+<header class="header">
+  <div class="logo-section">
+    <a href="/" class="logo-title">Travel Guider</a>
+  </div>
+
+  <nav class="nav-section">
+    <% tags.forEach(tag => { %>
+    <a href="/posts?tagId=<%= tag.TagId %>" class="outline-button">
+      <div
+        class="image-mask"
+        style="
+          -webkit-mask-image: url(<%= tag.TagImage %>);
+          mask-image: url(<%= tag.TagImage %>);
+        "
+      >
+        <div class="image-color"></div>
+      </div>
+      <%= tag.TagName %></a
+    >
+    <% }) %>
+  </nav>
+
+  <div class="contact-section">
+    <% if (isAdmin) { %>
+    <button class="outline-button">
+      <a href="/admin">Admin Pages</a>
+    </button>
+    <% } %>
+
+    <a href="/about" class="underline-anim">About me</a>
+
+    <% if (isAuth) { %>
+    <form action="/logout" method="post">
+      <button class="btn-link underline-anim">Logout</button>
+    </form>
+    <% } else { %>
+    <button class="outline-button">
+      <a href="/login">Login</a>
+    </button>
+    <% } %>
+  </div>
+</header>

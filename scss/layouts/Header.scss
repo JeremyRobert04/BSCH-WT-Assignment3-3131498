@@ -1,0 +1,181 @@
+@import "../style.scss";
+
+.header {
+  width: 100%;
+  min-height: 12rem;
+  background-color: $color-background-black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5rem;
+}
+
+a {
+  color: $color-text-white;
+  text-decoration: none;
+  font-family: "DM Sans", sans-serif;
+}
+
+.logo-section {
+  flex: 1;
+
+  color: $color-text-white;
+  font-weight: 500;
+}
+
+.nav-section {
+  flex: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
+
+  .outline-button {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+
+    border-radius: 30px;
+    border: 1px solid $color-text-white;
+    font-size: 1.8rem;
+    padding: 1rem 2rem;
+    background: none;
+    overflow: hidden;
+    outline: none;
+
+    cursor: pointer;
+    transition: background 0.75s ease-out;
+    -o-transition: background 0.75s ease-out;
+    -ms-transition: background 0.75s ease-out;
+    -moz-transition: background 0.75s ease-out;
+    -webkit-transition: background 0.75s ease-out;
+
+    background: {
+      image: linear-gradient(135deg, $color-text-white 50%, transparent 50%);
+      position: 100%;
+      size: 400%;
+    }
+
+    .image-mask {
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+
+      -webkit-mask-position: center;
+      mask-position: center;
+
+      -webkit-mask-size: 100%;
+      mask-size: 100%;
+
+      width: 2rem;
+      height: auto;
+      overflow: hidden;
+
+      .image-color {
+        background-color: white;
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+
+    &:hover {
+      background-position: 0;
+      color: $color-background-black;
+
+      .image-color {
+        background-color: $color-background-black;
+      }
+    }
+
+    .tag-image {
+      color: $color-text-white;
+      width: 2rem;
+      height: auto;
+    }
+  }
+}
+
+.contact-section {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 3rem;
+  color: $color-text-white;
+  font-size: 1.8rem;
+
+  .outline-button {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+
+    border-radius: 30px;
+    border: 1px solid $color-text-white;
+    color: $color-text-white;
+    font-size: 1.8rem;
+    padding: 1rem 2rem;
+    background: none;
+    overflow: hidden;
+    outline: none;
+
+    cursor: pointer;
+    transition: background 0.75s ease-out;
+    -o-transition: background 0.75s ease-out;
+    -ms-transition: background 0.75s ease-out;
+    -moz-transition: background 0.75s ease-out;
+    -webkit-transition: background 0.75s ease-out;
+
+    background: {
+      image: linear-gradient(135deg, $color-text-white 50%, transparent 50%);
+      position: 100%;
+      size: 400%;
+    }
+
+    &:hover {
+      background-position: 0;
+      color: $color-text-black;
+
+      a {
+        color: $color-text-black;
+      }
+    }
+  }
+
+  .btn-link {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    color: $color-text-white;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+  }
+
+  .underline-anim {
+    position: relative;
+    display: inline-block;
+    width: fit-content;
+    text-decoration: none;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background-color: $color-text-white;
+      transition: width 0.25s ease-out;
+    }
+
+    &:hover::before {
+      width: 100%;
+    }
+  }
+}

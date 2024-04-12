@@ -1,0 +1,170 @@
+<link rel="stylesheet" href="/css/AdminNewPost.css" />
+<link
+  href="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.5/dist/quill.snow.css"
+  rel="stylesheet"
+/>
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.5/dist/quill.js"></script>
+
+<script type="text/javascript" defer src="/js/admin-new-post.js"></script>
+
+<div>
+  <% if (locals.editMode) { %>
+  <h1>Edit Post</h1>
+  <% } else { %>
+  <h1>Create a new Post</h1>
+  <% } %>
+  <form
+    action="<%= locals.editMode ? '/admin/edit-post/' + locals.post.PostId : '/admin/new-post/' %>"
+    method="POST"
+    enctype="multipart/form-data"
+    class="new-post-form"
+    id="formNewPost"
+  >
+    <div id="postTitle">
+      <% if (locals.editMode) { %>
+        <textarea
+        id="postTitleInput"
+        name="PostTitle"
+        placeholder="Enter a new Post Title"
+        rows="1"
+        maxlength="100"
+        required
+      ><%= locals.post.Title %></textarea>
+      <% } else { %>
+        <textarea
+        id="postTitleInput"
+        name="PostTitle"
+        placeholder="Enter a new Post Title"
+        rows="1"
+        maxlength="100"
+        required
+      ></textarea>
+      <% } %>
+    </div>
+
+    <div id="postTextPreview">
+      <% if (locals.editMode) { %>
+        <textarea
+        id="postTextPreviewInput"
+        name="PostTextPreview"
+        placeholder="Enter your post preview"
+        rows="1"
+        maxlength="400"
+        required
+      ><%-locals.post.Preview %></textarea>
+      <% } else { %>
+        <textarea
+        id="postTextPreviewInput"
+        name="PostTextPreview"
+        placeholder="Enter your post preview"
+        rows="1"
+        maxlength="400"
+        required
+      ></textarea>
+      <% } %>
+    </div>
+
+    <div id="postImage">
+      <% if (locals.editMode) { %>
+      <img id="postImagePreview" src="<%= locals.post.ImageUrl %>" alt="" />
+       <% } else { %>
+      <img id="postImagePreview" src="" alt="" />
+      <% } %>
+      <label for="postImage" id="dropArea">
+        <input
+          type="file"
+          accept="image/*"
+          id="postImageInput"
+          name="PostPreview"
+          hidden
+        />
+        <% if (!locals.editMode) { %>
+        <div id="img-view">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            version="1.1"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            width="512"
+            height="512"
+            x="0"
+            y="0"
+            viewBox="0 0 32 32"
+            style="enable-background: new 0 0 512 512"
+            xml:space="preserve"
+            class=""
+          >
+            <g>
+              <path
+                d="M21.78 5.54H10.15a4.66 4.66 0 0 0-4.65 4.65v11.63a4.66 4.66 0 0 0 4.65 4.65h11.63a4.66 4.66 0 0 0 4.65-4.65V10.19c0-2.57-2.09-4.65-4.65-4.65zm3.65 16.27c0 2.01-1.64 3.65-3.65 3.65H10.15c-2.01 0-3.65-1.64-3.65-3.65V10.19c0-2.01 1.64-3.65 3.65-3.65h11.63c2.01 0 3.65 1.64 3.65 3.65z"
+                fill="currentColor"
+                opacity="1"
+                data-original="#000000"
+              ></path>
+              <path
+                d="M16.53 10.71a.495.495 0 0 0-.5-.12.495.495 0 0 0-.5.12l-3.52 3.52c-.2.2-.2.51 0 .71a.485.485 0 0 0 .7 0l2.81-2.81v9.55c0 .28.22.5.5.5s.5-.22.5-.5v-9.55l2.81 2.81a.485.485 0 0 0 .7 0c.2-.2.2-.51 0-.71z"
+                fill="currentColor"
+                opacity="1"
+                data-original="#000000"
+              ></path>
+            </g>
+          </svg>
+          <p>Drag and drop or click <b>here</b><br />to upload image</p>
+        </div>
+        <% } %>
+      </label>
+    </div>
+
+    <div id="postTag">
+      <select id="tagSelect" form="formNewPost" name="PostTag">
+        <% locals.tags.forEach((tag) => { %>
+        <option value="<%= JSON.stringify(tag) %>" <%= locals.editMode && tag.TagId === locals.post.Tag.TagId ? 'selected' : ''%>><%= tag.TagName %></option>
+        <% }); %>
+      </select>
+
+      <% if (locals.editMode) { %>
+        <div
+        id="selectedTag"
+        class="selected-tag"
+        style="background-color: <%= locals.post.Tag.TagColor %>"
+      >
+        <img
+          id="tagImage"
+          src="<%= locals.post.Tag.TagImage %>"
+          alt="Tag Image"
+          class="logo"
+        />
+        <p id="tagName"><%= locals.post.Tag.TagName %></p>
+      </div>
+      <% } else { %>
+        <div
+        id="selectedTag"
+        class="selected-tag"
+        style="background-color: <%= locals.tags[0].TagColor %>"
+      >
+        <img
+          id="tagImage"
+          src="<%= locals.tags[0].TagImage %>"
+          alt="Tag Image"
+          class="logo"
+        />
+        <p id="tagName"><%= locals.tags[0].TagName %></p>
+      </div>
+      <% } %>
+    </div>
+
+    <div id="postContent">
+      <% if (locals.editMode) { %>
+        <%- locals.post.Content %>
+      <% } %>
+    </div>
+
+    <input type="hidden" name="PostContent" id="hiddenPostContent" />
+
+    <button type="Submit" class="submitButton">
+      <% if (locals.editMode) { %>
+        Update Post
+        <% } else { %>
+          Create new Post
+      <% } %> </button>
+  </form>
+</div>

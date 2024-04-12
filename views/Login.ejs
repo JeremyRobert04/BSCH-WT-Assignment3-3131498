@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="/css/Login.css" />
+
+<div class="web-content">
+  <form action="login/" method="POST" class="form-card">
+    <label for="email-address">Email Address:</label>
+    <input
+      id="email-address"
+      type="email"
+      name="emailAddress"
+      placeholder="Enter your email address"
+    />
+    <label for="password">Password:</label>
+    <input
+      id="password"
+      type="password"
+      name="password"
+      placeholder="Enter your password"
+    />
+    <a class="register-link" href="/register"
+      >Don't have an account? <b>Register</b></a
+    >
+    <button type="submit">Login</button>
+    <% if (hasMessages) { %> <% messages.forEach(function(message) { %>
+    <p class="error-message"><%= message %></p>
+    <% }); %> <% } %>
+  </form>
+</div>

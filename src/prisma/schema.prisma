@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Create a table User with the following columns
+model User {
+  UserId              Int             @id @default(autoincrement())
+  FirstName           String
+  LastName            String
+  EmailAddress        String          @unique
+  PasswordHash        String
+  RoleId              Int
+  Role                Role            @relation(fields: [RoleId], references: [RoleId]) // Other side of the One to Many (see Role)
+  Posts               Post[]                                                            // One to Many (a user can create multiple posts)
+  Comments            Comment[]                                                         // One to many (a user can create multiple comments)
+  created_at          DateTime        @default(now())
+}
+
+// Create a table Role with the following columns:
+model Role {
+  RoleId            Int               @id @default(autoincrement())
+  RoleName          String            @unique
+  User              User[]                                                              // One to many (a role can belongs to multiple User)
+  created_at        DateTime          @default(now())
+}
+
+// Create a table Post with the following columns
+model Post {
+  PostId            Int               @id @default(autoincrement())
+  Author            User              @relation(fields: [AuthorId], references: [UserId]) // Other side of the One to Many (see User)
+  AuthorId          Int
+  Title             String
+  Preview           String?
+  ImageUrl          String?
+  Content           String
+  Comments          Comment[]                                                             // One to Many fields (a post can have many comments)
+  Tag               Tag?              @relation(fields: [TagId], references: [TagId], onDelete: SetNull) // Other side of the One to Many (see Tag)
+  TagId             Int?
+  created_at        DateTime          @default(now())
+}
+
+// Create a table Comment with the following columns
+model Comment {
+  CommentId       Int                 @id @default(autoincrement())
+  Author          User                @relation(fields: [AuthorId], references: [UserId])   // Reference the Author (see User)
+  AuthorId        Int
+  Post            Post                @relation(fields: [PostId], references: [PostId], onDelete: Cascade) // Ref Post (see Post)
+  PostId          Int
+  Comment         String
+  created_at      DateTime            @default(now())
+}
+
+// Create a table Tag with the following columns
+model Tag {
+  TagId           Int                 @id @default(autoincrement())
+  Post            Post[]                                                      // One to Many fields (a tag can have multiple post)
+  TagName         String
+  TagColor        String
+  TagImage        String
+  created_at      DateTime            @default(now())
+}

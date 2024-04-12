@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= locals.pageTitle %></title>
+    <meta name="description" content="<%= locals.pageDescription %>" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/layouts/Header.css" />
+    <link rel="stylesheet" href="/css/layouts/Footer.css" />
+    <link rel="stylesheet" href="/css/layouts/Admin.css" />
+  </head>
+  <body>
+    <div class="container">
+      <%- include("../partials/Header") %>
+
+      <div class="web-content">
+        <div class="side-bar">
+          <h1 class="panel-title">Admin Panel</h1>
+
+          <nav>
+            <ul>
+              <li>
+                <a class="underline-anim arrow-animation" href="/admin/">
+                  Overview
+                </a>
+              </li>
+              <li>
+                <a
+                  class="underline-anim arrow-animation"
+                  href="/admin/new-post"
+                >
+                  Create a new post
+                </a>
+              </li>
+              <li>
+                <a class="underline-anim arrow-animation" href="/admin/tags"
+                  >Tags</a
+                >
+              </li>
+              <li>
+                <a
+                  class="underline-anim arrow-animation"
+                  href="/admin/comments"
+                >
+                  Comments
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="display-content"><%- body %></div>
+      </div>
+
+      <%- include("../partials/Footer") %>
+    </div>
+  </body>
+</html>

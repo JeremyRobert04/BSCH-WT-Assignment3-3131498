@@ -1,0 +1,58 @@
+-- CreateTable
+CREATE TABLE "User" (
+    "UserId" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "FirstName" TEXT NOT NULL,
+    "LastName" TEXT NOT NULL,
+    "EmailAddress" TEXT NOT NULL,
+    "PasswordHash" TEXT NOT NULL,
+    "RoleId" INTEGER NOT NULL,
+    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "User_RoleId_fkey" FOREIGN KEY ("RoleId") REFERENCES "Role" ("RoleId") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Role" (
+    "RoleId" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "RoleName" TEXT NOT NULL,
+    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- CreateTable
+CREATE TABLE "Post" (
+    "PostId" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "AuthorId" INTEGER NOT NULL,
+    "Title" TEXT NOT NULL,
+    "Preview" TEXT,
+    "ImageUrl" TEXT,
+    "Content" TEXT NOT NULL,
+    "TagId" INTEGER NOT NULL,
+    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "Post_AuthorId_fkey" FOREIGN KEY ("AuthorId") REFERENCES "User" ("UserId") ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT "Post_TagId_fkey" FOREIGN KEY ("TagId") REFERENCES "Tag" ("TagId") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Comment" (
+    "CommentId" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "AuthorId" INTEGER NOT NULL,
+    "PostId" INTEGER NOT NULL,
+    "Comment" TEXT NOT NULL,
+    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "Comment_AuthorId_fkey" FOREIGN KEY ("AuthorId") REFERENCES "User" ("UserId") ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT "Comment_PostId_fkey" FOREIGN KEY ("PostId") REFERENCES "Post" ("PostId") ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Tag" (
+    "TagId" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "TagName" TEXT NOT NULL,
+    "TagColor" TEXT NOT NULL,
+    "TagImage" TEXT NOT NULL,
+    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_EmailAddress_key" ON "User"("EmailAddress");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Role_RoleName_key" ON "Role"("RoleName");

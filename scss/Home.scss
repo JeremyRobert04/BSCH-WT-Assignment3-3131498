@@ -1,0 +1,237 @@
+@import "./style.scss";
+
+.web-content {
+  position: relative;
+}
+
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 12rem);
+  background-color: $color-background-black;
+
+  & .content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5rem;
+
+    & .social-media {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+
+      & svg {
+        color: $color-text-white;
+        width: 2.5rem;
+        height: auto;
+      }
+    }
+
+    & .latest-post {
+      flex: 2;
+      align-self: flex-start;
+      padding: 0;
+      color: $color-text-white;
+
+      & h2 {
+        margin: 0;
+        font-size: 7rem;
+        line-height: 1;
+        font-weight: 400;
+      }
+
+      &__description {
+        margin-top: 4rem;
+        font-size: 2rem;
+      }
+
+      & a {
+        font-size: 1.7rem;
+        margin-bottom: 2rem;
+        position: relative;
+        display: inline-block;
+        width: fit-content;
+        text-decoration: none;
+
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 0;
+          height: 2px;
+          background-color: $color-text-white;
+          transition: width 0.25s ease-out;
+        }
+
+        &:hover::before {
+          width: 100%;
+        }
+      }
+    }
+
+    & .space {
+      flex: 1;
+    }
+  }
+
+  & .mosaic {
+    flex: 2.5;
+    height: fit-content;
+
+    display: grid;
+    grid-template-columns: 2fr 2fr 3fr 3fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "large large small1 small2"
+      "large large small3 small4";
+
+    & img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    & .large-image {
+      grid-area: large;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+    & .small-image1 {
+      grid-area: small1;
+    }
+
+    & .small-image2 {
+      grid-area: small2;
+    }
+
+    & .small-image3 {
+      grid-area: small3;
+    }
+
+    & .small-image4 {
+      grid-area: small4;
+    }
+  }
+}
+
+.latest-blog {
+  margin: 0 5rem 5rem 5rem;
+
+  & h3 {
+    font-size: 5rem;
+    line-height: 1;
+    font-weight: 600;
+  }
+
+  & .post-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5rem;
+
+    grid-template-rows: auto;
+
+    & .card {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      grid-column: span 1;
+      background-color: #ffffff;
+      border-radius: 2rem;
+      overflow: hidden;
+      color: $color-text-black;
+
+      .post-preview-image {
+        width: auto;
+        height: 45%;
+        object-fit: cover;
+      }
+
+      .card-content {
+        padding: 2rem 2rem;
+
+        .card-type {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 2rem;
+          border-radius: 10rem;
+          width: fit-content;
+          padding: 1rem 2rem;
+
+          p {
+            color: $color-text-black;
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+          }
+
+          .tag-image {
+            margin: 0;
+            width: 2.5rem;
+            height: auto;
+            color: $color-background-black;
+          }
+        }
+
+        .card-preview {
+          padding-top: 1rem;
+
+          h4 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+          }
+
+          .card-description {
+            font-size: 1.7rem;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+          }
+
+          .card-date {
+            font-size: 1.7rem;
+          }
+        }
+      }
+    }
+
+    .extended {
+      grid-column: span 3;
+      flex-direction: row;
+
+      .post-preview-image {
+        width: 55%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      .card-content {
+        width: 45%;
+        background-color: $color-background-black;
+        display: flex;
+        flex-direction: column;
+        padding: 5rem 5rem;
+
+        .card-preview {
+          color: $color-text-white;
+
+          h4 {
+            font-size: 4rem;
+          }
+
+          .card-description {
+            -webkit-line-clamp: 6;
+          }
+        }
+      }
+    }
+  }
+}

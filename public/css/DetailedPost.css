@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@100..900&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+} /* makes 1rem 10px */
+body,
+.container {
+  margin: 0;
+  padding: 0;
+  font-size: 1.8em;
+  font-optical-sizing: auto;
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "avenir next", avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
+  line-height: 1.3;
+  font-style: normal;
+  color: #010101;
+  background-color: #f5f5f5;
+}
+
+/* headings */
+h1 {
+  font-size: 7rem;
+  line-height: 1;
+}
+
+h2 {
+  font-size: 6rem;
+}
+
+h3 {
+  font-size: 5rem;
+}
+
+h4 {
+  font-size: 4rem;
+}
+
+p {
+  font-size: 1.5rem;
+}
+
+.web-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.post-container .post-image {
+  width: 100%;
+  height: calc(100vh - 32rem);
+  object-fit: cover;
+}
+.post-container section {
+  width: 65%;
+  background-color: white;
+  padding: 0 10rem;
+}
+.post-container .post-content .post-title {
+  margin-bottom: 0;
+}
+.post-container .post-content .post-preview {
+  font-size: 1.8rem;
+  color: #696969;
+}
+.post-container .post-content .tag-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  border-radius: 10rem;
+  width: fit-content;
+  padding: 1rem 2rem;
+}
+.post-container .post-content .tag-container .tag-name {
+  color: #010101;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.post-container .post-content .tag-container .tag-image {
+  margin: 0;
+  width: 2.5rem;
+  height: auto;
+  color: #010101;
+}
+.post-container .post-content .post-text-content p {
+  color: #010101;
+  font-size: 2rem;
+}
+.post-container .post-content .post-text-content a {
+  color: rgb(0, 0, 238);
+}
+.post-container .post-content .post-text-content img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.comments-section .non-auth-section {
+  margin-top: 10rem;
+  border-top: 1px solid #191919;
+  border-bottom: 1px solid #191919;
+  padding: 5rem 0;
+}
+.comments-section .non-auth-section p {
+  font-size: 2rem;
+  margin: 0;
+}
+.comments-section .non-auth-section .signup-title {
+  font-size: 2.5rem;
+}
+.comments-section .non-auth-section .signup-button {
+  outline: none;
+  border: none;
+  background-color: #010101;
+  width: fit-content;
+  font-size: 1.8rem;
+  padding: 1rem 2rem;
+  color: #ffffff;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+.comments-section .new-comment-form {
+  margin-top: 10rem;
+  border-top: 1px solid #191919;
+  border-bottom: 1px solid #191919;
+  padding: 5rem 0;
+}
+.comments-section .new-comment-form p {
+  font-size: 2rem;
+  margin: 0;
+}
+.comments-section .new-comment-form .welcome-title {
+  font-size: 2.5rem;
+}
+.comments-section .new-comment-form .input-comment {
+  margin-top: 2rem;
+  padding: 2rem;
+  width: 100%;
+  border: 1px solid #191919;
+  font-size: 2rem;
+}
+.comments-section .new-comment-form .post-new-comment-button {
+  outline: none;
+  border: none;
+  background-color: #010101;
+  width: fit-content;
+  font-size: 1.8rem;
+  padding: 1rem 2rem;
+  color: #ffffff;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+.comments-section .number-comments {
+  margin: 3rem 0;
+}
+.comments-section .comment-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+.comments-section .comment-container .comment-infos {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.comments-section .comment-container .comment-infos p {
+  margin: 0;
+}
+.comments-section .comment-container .comment-infos .comment-author {
+  font-size: 2.3rem;
+  font-weight: 600;
+}
+.comments-section .comment-container .comment-infos .comment-data {
+  font-size: 2rem;
+}
+.comments-section .comment-container form button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  border-radius: 1rem;
+  height: 4rem;
+  width: 4rem;
+  cursor: pointer;
+}
+.comments-section .comment-container form button svg {
+  width: 2rem;
+  height: auto;
+  opacity: 1;
+}

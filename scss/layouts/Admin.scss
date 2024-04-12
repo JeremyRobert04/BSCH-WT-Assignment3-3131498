@@ -1,0 +1,86 @@
+@import "../style.scss";
+
+.web-content {
+  position: relative;
+  min-height: calc(100vh - 12rem);
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.side-bar {
+  max-height: calc(100vh - 16rem);
+  margin: 2rem 5rem 2rem 2rem;
+  border-radius: 2rem;
+  background-color: $color-background-black;
+  padding: 3rem 2rem;
+  top: 8rem;
+  position: sticky;
+
+  .panel-title {
+    text-align: center;
+    color: $color-text-white;
+  }
+
+  nav {
+    margin-top: 10rem;
+
+    li {
+      margin: 0 0 2rem 0;
+    }
+
+    a {
+      font-size: 2.3rem;
+      color: $color-text-white;
+    }
+
+    .arrow-animation {
+      display: inline-block;
+      position: relative;
+      color: $color-text-white;
+      transition: all 0.5s;
+
+      &::after {
+        font-size: 3rem;
+        content: "»";
+        position: absolute;
+        opacity: 0;
+        top: -7px;
+        right: -20px;
+        transition: 0.5s;
+      }
+
+      &:hover::after {
+        opacity: 1;
+        right: -40px;
+      }
+    }
+
+    .underline-anim {
+      width: fit-content;
+      text-decoration: none;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 0;
+        height: 2px;
+        background-color: $color-text-white;
+        transition: width 0.3s ease-out;
+      }
+
+      &:hover::before {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.display-content {
+  margin-top: 2rem;
+  margin-right: 5rem;
+  padding-top: 3rem;
+  min-width: 0;
+  overflow: hidden;
+}

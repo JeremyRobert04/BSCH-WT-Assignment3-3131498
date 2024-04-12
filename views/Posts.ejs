@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="/css/Posts.css" />
+
+<div class="web-content">
+  <section class="latest-blog">
+    <h3><%= locals.pageTitleSection %></h3>
+
+    <div class="post-container">
+      <% locals.posts.forEach((post, index) => { %> <a href="/post/<%=
+      post.PostId %>" class="card <%= index % 12 === 1 || index % 12 === 6 ?
+      "extended" : "" %>">
+      <img
+        class="post-preview-image"
+        src="<%= post.ImageUrl %>"
+        alt="Post image preview"
+      />
+
+      <div class="card-content">
+        <div
+          class="card-type"
+          style="background-color: <%= post.Tag.TagColor %>"
+        >
+          <img
+            src="<%= post.Tag.TagImage %>"
+            alt="Tag Image"
+            class="tag-image"
+          />
+          <p><%= post.Tag.TagName %></p>
+        </div>
+
+        <div class="card-preview">
+          <h4><%= post.Title %></h4>
+          <p class="card-description"><%= post.Preview %></p>
+          <p class="card-date">
+            <% const rawDate = new Date(post.created_at); const formattedDate =
+            rawDate.toLocaleDateString('en-US', { month: 'short', day:
+            '2-digit', year: 'numeric' }); %> <%= formattedDate %> by
+            <b><%= post.Author.FirstName %> <%= post.Author.LastName %></b>
+          </p>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </section>
+</div>
