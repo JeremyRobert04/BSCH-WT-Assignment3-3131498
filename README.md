@@ -11,30 +11,30 @@ The goal is to create a blog using Node.Js and Express.Js.
 
 ## Blog Requirement
 
-[x] The blog shall have a home page  
-[x] The blog shall feature an introduction  
-[x] The blog shall feature a navigation menu  
-[x] The blog shall have a navigation menu with links to all the other pages  
-[x] The home page shall feature a preview of the 10 latest blog posts.  
-[x] The blog / latest news section shall list blog articles  
-[x] The listed blog articles shall allow the user to click on one post and be presented with a details page.  
-[x] The details page of a post shall have a publish date.  
-[x] The details page of a post shall have a title.  
-[x] The details page of a post shall have subtitles where required.  
-[x] The details page of a post shall have an image.  
-[x] The details page of a post shall contain the main text of the blog post.  
-[x] All images used on site shall have image alt tags and image titles  
-[x] Include links to other posts on your site where appropriate  
-[x] Include relevant external links to third-party sites  
-[x] The details page of a post shall include author and contributing author info  
-[x] All pages/posts shall have a consistent, persistent header  
-[x] The header shall have a site title  
-[x] The header shall have a description/tagline  
-[] The app shall allow an admin user to create new users  
-[] The app shall allow an admin user to edit new users’ information  
-[] The app shall allow an admin user to delete new users’ information  
-[x] The app shall store new users’ information name, email address.  
-[x] Users can log in and log out by creating or destroying a token.
+- [x] The blog shall have a home page  
+- [x] The blog shall feature an introduction  
+- [x] The blog shall feature a navigation menu  
+- [x] The blog shall have a navigation menu with links to all the other pages  
+- [x] The home page shall feature a preview of the 10 latest blog posts.  
+- [x] The blog / latest news section shall list blog articles  
+- [x] The listed blog articles shall allow the user to click on one post and be presented with a details page.  
+- [x] The details page of a post shall have a publish date.  
+- [x] The details page of a post shall have a title.  
+- [x] The details page of a post shall have subtitles where required.  
+- [x] The details page of a post shall have an image.  
+- [x] The details page of a post shall contain the main text of the blog post.  
+- [x] All images used on site shall have image alt tags and image titles  
+- [x] Include links to other posts on your site where appropriate  
+- [x] Include relevant external links to third-party sites  
+- [x] The details page of a post shall include author and contributing author info  
+- [x] All pages/posts shall have a consistent, persistent header  
+- [x] The header shall have a site title  
+- [x] The header shall have a description/tagline  
+- [ ] The app shall allow an admin user to create new users  
+- [ ] The app shall allow an admin user to edit new users’ information  
+- [ ] The app shall allow an admin user to delete new users’ information  
+- [x] The app shall store new users’ information name, email address.  
+- [x] Users can log in and log out by creating or destroying a token.
 
 ## Development Setup
 
