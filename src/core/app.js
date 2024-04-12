@@ -14,10 +14,11 @@ const session = require("express-session");
 const passport = require("passport"); // use to authenticate user
 const { isOwner } = require("../middleware/auth.middleware");
 const { getTags } = require("../views/controllers/tag.controller");
+const path = require("path");
 
 // Serve the /public directory so we can reference img only by doing /img/
 app.use(express.static("public"));
-app.use("/public/", express.static("public"));
+app.use("/public/", express.static(path.resolve(__dirname, "../../public")));
 
 // use to get req.body
 app.use(bodyParser.json());
