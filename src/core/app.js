@@ -41,6 +41,7 @@ app.use(passport.session());
 // Use Layout with Main.ejs file so header & footer are always the same
 app.use(expressLayout);
 app.set("layout", "./layouts/Main");
+app.set("views", path.resolve(__dirname, "../../views"));
 app.set("view engine", "ejs");
 
 // Middleware to set generals variables for pages
