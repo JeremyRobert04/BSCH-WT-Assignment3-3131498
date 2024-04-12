@@ -161,7 +161,7 @@ router.post("/register", async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Create a new user
-    await prisma.user.create({
+    const newUser = await prisma.user.create({
       data: {
         FirstName: firstname,
         LastName: lastname,
@@ -182,7 +182,13 @@ router.post("/register", async (req, res) => {
       },
     });
 
-    res.redirect("/");
+    req.login(newUser, (err) => {
+      if (err) {
+        return next(err);
+      }
+      return res.redirect("/");
+    });
+
   } catch (error) {
     req.session.messages = ["An error occured during user creation."];
     return res.redirect("/register");
