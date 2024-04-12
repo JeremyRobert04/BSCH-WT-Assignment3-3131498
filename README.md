@@ -9,6 +9,9 @@
 This school project has to be done in 3 weeks.  
 The goal is to create a blog using Node.Js and Express.Js.
 
+### Access project:
+The project can be accessed by [clicking here](https://wt-assignment3-jeremy-robert-3131498.uksouth.cloudapp.azure.com/).
+
 ## Blog Requirement
 
 - [x] The blog shall have a home page  
