@@ -71,7 +71,7 @@ p {
 }
 .latest-blog .post-container .card .post-preview-image {
   width: auto;
-  height: 45%;
+  height: 25rem;
   object-fit: cover;
 }
 .latest-blog .post-container .card .card-content {
